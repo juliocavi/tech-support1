@@ -23,12 +23,12 @@ public class Responder
         aleatorio = new Random();
         respuestasForInput = new HashMap<>();
         
-        respuestasForInput.put("payment", "Our payment service is down right now, please wait");
-        respuestasForInput.put("aq", "You can ask questions to us and we response you later.");
+        respuestasForInput.put("payment", "Our payment service is down right now, please wait.");
+        respuestasForInput.put("aq", "You can ask questions to us and we will response you later.");
         respuestasForInput.put("linux", "Our software allready can be runned on linux.");
-        respuestasForInput.put("help", "Follow this page if you need our help.");
+        respuestasForInput.put("help", "Follow this page if you need our help, www.tech-support.help.com.");
         
-        respuestas.add("Give me a second to solve the problem please.");
+        respuestas.add("Give us a moment to solve the problem please.");
         respuestas.add("Thanks you for your time.");
         respuestas.add("Thanks you for your help.");
         respuestas.add("I hope see you later.");
