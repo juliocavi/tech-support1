@@ -15,7 +15,7 @@ public class Responder
 {
     ArrayList<String> respuestas;
     Random aleatorio;
-    HashMap<String, String> respuestasForInput;
+    HashMap<HashSet<String>, String> respuestasForInput;
     /**
      * Construct a Responder - nothing to do
      */
@@ -24,17 +24,43 @@ public class Responder
         respuestas = new ArrayList<>(); 
         aleatorio = new Random();
         respuestasForInput = new HashMap<>();
-
-        respuestasForInput.put("payment", "Our payment service is down right now, please wait.");
-        respuestasForInput.put("aq", "You can ask questions to us and we will response you later.");
-        respuestasForInput.put("linux", "Our software allready can be runned on linux.");
-        respuestasForInput.put("help", "Follow this page if you need our help, www.tech-support.help.com.");
+        
+        HashSet<String> frase1 = new HashSet<>();
+        HashSet<String> frase2 = new HashSet<>();
+        HashSet<String> frase3 = new HashSet<>();
+        HashSet<String> frase4 = new HashSet<>();
+        HashSet<String> frase5 = new HashSet<>();
+        HashSet<String> frase6 = new HashSet<>();
 
         respuestas.add("Give us a moment to solve the problem please.");
         respuestas.add("Thanks you for your time.");
         respuestas.add("Thanks you for your help.");
         respuestas.add("I hope see you later.");
         respuestas.add("What operating system do you have?");
+
+        frase1.add("free");
+        frase1.add("app");
+
+        frase2.add("app");
+
+        frase3.add("free");
+
+        frase4.add("problem");
+        frase4.add("linux");
+        frase4.add("crash");
+
+        frase5.add("linux");
+        frase5.add("problem");
+
+        frase6.add("crash");
+        frase6.add("linux");
+
+        respuestasForInput.put(frase1, "Our app will be free soon.");
+        respuestasForInput.put(frase2, "You can find our app in the next url: www.techsuppot.app.com.");
+        respuestasForInput.put(frase3, "Are you searching our app for free?");
+        respuestasForInput.put(frase4, "Follow this link to solve your problem about linux crash.");
+        respuestasForInput.put(frase5, "What is your problem with our app for linux?");
+        respuestasForInput.put(frase6, "Contact with our support system, to find help if you need it please.");
     }
 
     /**
@@ -44,15 +70,9 @@ public class Responder
     public String generateResponse(HashSet<String> input)
     {
         String respuesta = null;
-        boolean encontrado = false;
-        Iterator<String> itinput = input.iterator();
-        while(itinput.hasNext() && !encontrado){
-            respuesta = respuestasForInput.get(itinput.next());
-            if(respuesta != null){
-                encontrado = true;
-            }
-        }
         
+        respuesta = respuestasForInput.get(input);
+
         if(respuesta == null){
             respuesta = respuestas.get(aleatorio.nextInt(respuestas.size()));
         }
