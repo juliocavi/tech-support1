@@ -44,11 +44,14 @@ public class Responder
     public String generateResponse(HashSet<String> input)
     {
         String respuesta = null;
-        String fraseInput = "";
-        for(String palabra : input){
-            fraseInput = palabra;
+        boolean encontrado = false;
+        Iterator<String> itinput = input.iterator();
+        while(itinput.hasNext() && !encontrado){
+            respuesta = respuestasForInput.get(itinput.next());
+            if(respuesta != null){
+                encontrado = true;
+            }
         }
-        respuesta = respuestasForInput.get(fraseInput);
         
         if(respuesta == null){
             respuesta = respuestas.get(aleatorio.nextInt(respuestas.size()));
