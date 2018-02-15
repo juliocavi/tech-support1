@@ -24,7 +24,7 @@ public class Responder
         respuestas = new ArrayList<>(); 
         aleatorio = new Random();
         respuestasForInput = new HashMap<>();
-        
+
         HashSet<String> frase1 = new HashSet<>();
         HashSet<String> frase2 = new HashSet<>();
         HashSet<String> frase3 = new HashSet<>();
@@ -70,11 +70,16 @@ public class Responder
     public String generateResponse(HashSet<String> input)
     {
         String respuesta = null;
-        
+
         respuesta = respuestasForInput.get(input);
 
         if(respuesta == null){
-            respuesta = respuestas.get(aleatorio.nextInt(respuestas.size()));
+            if(respuestas.size() > 0){
+                respuesta = respuestas.remove(aleatorio.nextInt(respuestas.size()));
+            }
+            else{
+                respuesta = "Sorry, I dont understant what you want to say.";
+            }
         }
 
         return respuesta;
